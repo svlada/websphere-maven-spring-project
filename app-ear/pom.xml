@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<parent>
+		<artifactId>app</artifactId>
+		<groupId>com.svlada</groupId>
+		<version>1.0.0</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.svlada</groupId>
+	<artifactId>app-ear</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.svlada</groupId>
+			<artifactId>app-webapp</artifactId>
+			<version>1.0.0</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<finalName>APP_EAR</finalName>
+					<modules>
+						<webModule>
+							<groupId>com.svlada</groupId>
+							<artifactId>app-webapp</artifactId>
+							<bundleFileName>app-webapp.war</bundleFileName>
+							<contextRoot>/app</contextRoot>
+						</webModule>
+					</modules>
+					<generateApplicationXml>true</generateApplicationXml>
+				</configuration>
+
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
